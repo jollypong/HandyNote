@@ -1,3 +1,4 @@
+//Req'd dependencies
 const router = require('express').Router(); 
 const path = require('path');
 
@@ -9,5 +10,5 @@ router.get('/notes', (req,res)=> {
 router.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, '../public/index.html')); 
 });
-
+//export so can be used in server.js
 module.exports = router; 
