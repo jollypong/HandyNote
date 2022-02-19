@@ -2,7 +2,8 @@
 //required files
 const express = require('express');
 const path = require('path');
-const api = require('./Develop/routes/index.js.js');
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
 
 const PORT = process.env.port || 3001; 
 
@@ -22,7 +23,7 @@ app.use('/', htmlRoutes);
 app.use('/api', apiRoutes);
 // GET route for wildcard page
 app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/pages/404.html'))
+  res.sendFile(path.join(__dirname, '../public/index.html'))
 );
 //listener for port
 app.listen(PORT, ()=> 

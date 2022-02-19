@@ -1,5 +1,5 @@
 const router = require('express').Router(); 
-const saveData = require('../db/saveData'); 
+const saveData = require('../../db/db.json'); 
 const uuid = require('../helpers/uuid')
 // GET/api/notes -> read db.json
 router.get('/notes', function (req, res){
