@@ -1,5 +1,5 @@
 // create a server.js file that will hold all info for back end. 
-//required files
+// required files
 const express = require('express');
 const path = require('path');
 const apiRoutes = require('./routes/apiRoutes');
@@ -25,7 +25,7 @@ app.use('/api', apiRoutes);
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '../public/index.html'))
 );
-//listener for port
+// listener for port
 app.listen(PORT, ()=> 
 console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
