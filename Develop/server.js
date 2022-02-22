@@ -1,31 +1,32 @@
 // create a server.js file that will hold all info for back end. 
 // required files
 const express = require('express');
-const path = require('path');
-const apiRoutes = require('./routes/apiRoutes');
+const apiRoutes= require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
-
+//PORT for heroku and default
 const PORT = process.env.port || 3001; 
 
 const app = express(); 
 
-// static paths???
-app.use(express.static('public'));
-
-//parse JSON and URLencoded form data 
+// Middleware for reading URL format and JSON format
 app.use(express.urlencoded({extended: true})); 
 app.use(express.json()); 
 
-// import routes 
-// GET route for index.html 
-app.use('/', htmlRoutes);
+// static paths???
+app.use(express.static('public'));
+
+// GET route for home page (index.html)
+app.get('/', htmlRoutes);
+
 // GET route for notes.html 
-app.use('/api', apiRoutes);
+app.get('/api', apiRoutes);
+
 // GET route for wildcard page
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '../public/index.html'))
 );
+
 // listener for port
 app.listen(PORT, ()=> 
-console.log(`App listening at http://localhost:${PORT} 🚀`)
+console.log(`Listening at http://localhost:${PORT} 🚀`)
 );

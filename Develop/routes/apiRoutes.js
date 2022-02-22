@@ -1,28 +1,38 @@
 //req'd dependencies
-const notes = require('express').Router(); 
-const dataHandler = require('./dataHandler'); 
+const apiRoutes = require('express').Router();
+const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const uuid = require('../helpers/uuid');
 
-// GET/api/notes -> read db.json
-notes.get('/notes', function (req, res){
-    dataHandler
-    .retrieveNotes()
-    .then(notes => res.json(notes))
-    .catch(err => res.status(500).json(err));
+// GET route for retrieving notes: 
+apiRoutes.get('/', (req, res) => {
+    console.info(`${req.method} request received to retrieve notes`);
+    readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
 });
-// POST/api/notes -> read and append to json 
-notes.post('/notes', (req, res) => {
-    dataHandler 
-    .addNote(req.body)
-    .then(notes => res.json(notes))
-    .catch(err => res.status(500).json(err));
+
+// POST route for writing new notes
+apiRoutes.post('/notes', (req, res) => {
+    console.info(`${req.method} request received to add new notes`);
+    console.log(req.body);
+    const { title, text } = req.body;
+    if (req.body) {
+        const newNote = {
+            title, 
+            text, 
+            note_id: uuid() 
+        };
+        readAndAppend(newNote, '../db/db.json');
+        res.json(`Note added succesfully`);
+    } else {
+        res.json(`Error in adding note`);
+    }
 });
 
 // Bonus (delete)
-notes.delete('/notes/:id', function (req, res) {
+apiRoutes.delete('/notes/:id', function (req, res) {
     dataHandler
         .deleteNote(req.params.id)
         .then(() => res.json({ ok: true }))
         .catch(err => res.status(500).json(err));
 });
 
-module.exports = notes; 
+module.exports = apiRoutes; 
