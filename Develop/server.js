@@ -3,6 +3,7 @@
 const express = require('express');
 const apiRoutes= require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
+const path = require('path');
 //PORT for heroku and default
 const PORT = process.env.port || 3001; 
 
@@ -19,12 +20,12 @@ app.use(express.static('public'));
 app.get('/', htmlRoutes);
 
 // GET route for notes.html 
-app.get('/api', apiRoutes);
+app.get('/notes', apiRoutes);
 
 // GET route for wildcard page
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '../public/index.html'))
-);
+// app.get('*', (req, res) =>
+//   res.sendFile(path.join(__dirname, '../public/index.html'))
+// );
 
 // listener for port
 app.listen(PORT, ()=> 
