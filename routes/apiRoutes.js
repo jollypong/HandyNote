@@ -30,7 +30,7 @@ router.post('/notes', (req, res) => {
 // Bonus (delete specific note)
 router.delete('/notes/:note_id', (req, res) => {
     const noteId = req.params.note_id;
-    readFromFile(`../db/db.json`)
+    readFromFile('./db/db.json')
         .then((data) => JSON.parse(data))
         .then((json) => {
             //Make a new array of all notes except the one with ID in url
@@ -38,18 +38,6 @@ router.delete('/notes/:note_id', (req, res) => {
             //Overwrite db.json without the note_id specified in url  
             writeToFile('./db/db.json', result)
             res.json(`item ${noteId} has been deleted`);
-        });
-});
-// Bonus (need get to verify if id still there after deletion)
-router.get('notes/:note_id', (req, res) => {
-    const noteId = req.params.note_id;
-    readFromFile('./db/db.json')
-        .then((data) => JSON.parse(data))
-        .then((json) => {
-            const result = json.filter((note) => note.note_id === noteId);
-            return result.length > 0
-                ? res.json(result)
-                : res.json('No note with that ID');
         });
 });
 
