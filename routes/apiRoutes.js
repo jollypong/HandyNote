@@ -6,7 +6,7 @@ const uuid = require('../helpers/uuid');
 // GET route for retrieving notes: 
 router.get('/notes', (req, res) => {
     console.log(`${req.method} request received to retrieve notes`);
-    readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
+    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
 // POST route for writing new notes
@@ -20,7 +20,7 @@ router.post('/notes', (req, res) => {
             title, 
             text 
         };
-        readAndAppend(newNote, '../db/db.json');
+        readAndAppend(newNote, './db/db.json');
         res.json(`Note added succesfully`);
     } else {
         res.json(`Error in adding note`);
