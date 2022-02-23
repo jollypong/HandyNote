@@ -5,7 +5,7 @@ const uuid = require('../helpers/uuid');
 
 // GET route for retrieving notes: 
 router.get('/notes', (req, res) => {
-    console.log(`${req.method} request received to retrieve notes`);
+    console.log(`${req.method} request received to retrieve saved notes`);
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
@@ -16,7 +16,7 @@ router.post('/notes', (req, res) => {
     const { title, text } = req.body;
     if (req.body) {
         const newNote = {
-            note_id: uuid(),
+            id: uuid(),
             title,
             text
         };
@@ -28,14 +28,14 @@ router.post('/notes', (req, res) => {
 });
 
 // Bonus (delete specific note)
-router.delete('/notes/:note_id', (req, res) => {
-    const noteId = req.params.note_id;
+router.delete('/notes/:id', (req, res) => {
+    const noteId = req.params.id;
     readFromFile('./db/db.json')
         .then((data) => JSON.parse(data))
         .then((json) => {
             //Make a new array of all notes except the one with ID in url
-            const result = json.filter((note) => note.note_id !== noteId);
-            //Overwrite db.json without the note_id specified in url  
+            const result = json.filter((note) => note.id !== noteId);
+            //Overwrite db.json without the id specified in url  
             writeToFile('./db/db.json', result)
             res.json(`item ${noteId} has been deleted`);
         });
