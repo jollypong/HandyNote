@@ -22,7 +22,7 @@
 This is a simple note taking app for users to use within HTML environment. Users are able to input title of the note, text content and save them to the side bar on the left. On clicking, the note will display on the right side. On clicking the plus icon while viewing notes, user can add a new note. On clicking the trash can icon, users are able to delete notes. 
 
 
-This application was made using JavaScript, HTML, CSS, Node JS, and NPM Packages.
+This application was made using JavaScript, HTML, CSS, Node JS, and NPM Packages. 
 
 ## Installation
 
@@ -44,8 +44,9 @@ This application was made using JavaScript, HTML, CSS, Node JS, and NPM Packages
     npm install
   ```
 ## Usage
-
+This application is currently deployed on Heroku.
 Simply start using the application by clicking below link. 
+
 [Handy Note](https://lit-tor-53201.herokuapp.com/)
 
 ## Test
