@@ -6,7 +6,7 @@ const htmlRoutes = require('./routes/htmlRoutes');
 const path = require('path');
 
 //PORT for heroku and default
-const PORT = process.env.port || 3001; 
+const PORT = process.env.PORT || 3001;
 
 const app = express(); 
 
