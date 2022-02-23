@@ -24,9 +24,9 @@ app.use('/', htmlRoutes);
 app.use('/api', apiRoutes);
 
 // GET route for wildcard page
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '../public/index.html'))
-);
+// app.get('*', (req, res) =>
+//   res.sendFile(path.join(__dirname, '../public/index.html'))
+// );
 
 // listener for port
 app.listen(PORT, ()=> 
