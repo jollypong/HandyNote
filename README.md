@@ -47,7 +47,7 @@ This application was made using JavaScript, HTML, CSS, Node JS, and NPM Packages
 This application is currently deployed on Heroku.
 Simply start using the application by clicking below link. 
 
-[Handy Note](https://lit-tor-53201.herokuapp.com/)
+[Handy Note](https://handynotejollypong.herokuapp.com/)
 
 ## Test
 
