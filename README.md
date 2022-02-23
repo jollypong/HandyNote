@@ -46,7 +46,7 @@ This application was made using JavaScript, HTML, CSS, Node JS, and NPM Packages
 ## Usage
 
 Simply start using the application by clicking below link. 
-[Handy Note]()
+[Handy Note](https://lit-tor-53201.herokuapp.com/)
 
 ## Test
 
