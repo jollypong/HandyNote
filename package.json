@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "npm install",
-    "start": "npm install" 
+    "build": "npm install"
   },
   "author": "",
   "license": "ISC",
